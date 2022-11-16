@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ustcsse.basic.mapper.ScoreCountMapper">
+  <resultMap id="BaseResultMap" type="cn.ustcsse.basic.domain.ScoreCount">
+    <!--@mbg.generated-->
+    <!--@Table basic.ScoreCount-->
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="RoomID" jdbcType="BIGINT" property="roomID" />
+    <result column="StartTime" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="EndTime" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="StudentCount" jdbcType="INTEGER" property="studentCount" />
+    <result column="Score1" jdbcType="INTEGER" property="score1" />
+    <result column="Score2" jdbcType="INTEGER" property="score2" />
+    <result column="Score3" jdbcType="INTEGER" property="score3" />
+    <result column="Score4" jdbcType="INTEGER" property="score4" />
+    <result column="Score5" jdbcType="INTEGER" property="score5" />
+    <result column="Score6" jdbcType="INTEGER" property="score6" />
+    <result column="AverageScore" jdbcType="DOUBLE" property="averageScore" />
+    <result column="Variance" jdbcType="DOUBLE" property="variance" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, RoomID, StartTime, EndTime, StudentCount, Score1, Score2, Score3, Score4, Score5, 
+    Score6, AverageScore, Variance
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from basic.ScoreCount
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from basic.ScoreCount
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.ustcsse.basic.domain.ScoreCount">
+    <!--@mbg.generated-->
+    insert into basic.ScoreCount (Id, RoomID, StartTime, 
+      EndTime, StudentCount, Score1, 
+      Score2, Score3, Score4, 
+      Score5, Score6, AverageScore, 
+      Variance)
+    values (#{id,jdbcType=BIGINT}, #{roomID,jdbcType=BIGINT}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{studentCount,jdbcType=INTEGER}, #{score1,jdbcType=INTEGER}, 
+      #{score2,jdbcType=INTEGER}, #{score3,jdbcType=INTEGER}, #{score4,jdbcType=INTEGER}, 
+      #{score5,jdbcType=INTEGER}, #{score6,jdbcType=INTEGER}, #{averageScore,jdbcType=DOUBLE}, 
+      #{variance,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ustcsse.basic.domain.ScoreCount">
+    <!--@mbg.generated-->
+    insert into basic.ScoreCount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="roomID != null">
+        RoomID,
+      </if>
+      <if test="startTime != null">
+        StartTime,
+      </if>
+      <if test="endTime != null">
+        EndTime,
+      </if>
+      <if test="studentCount != null">
+        StudentCount,
+      </if>
+      <if test="score1 != null">
+        Score1,
+      </if>
+      <if test="score2 != null">
+        Score2,
+      </if>
+      <if test="score3 != null">
+        Score3,
+      </if>
+      <if test="score4 != null">
+        Score4,
+      </if>
+      <if test="score5 != null">
+        Score5,
+      </if>
+      <if test="score6 != null">
+        Score6,
+      </if>
+      <if test="averageScore != null">
+        AverageScore,
+      </if>
+      <if test="variance != null">
+        Variance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roomID != null">
+        #{roomID,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentCount != null">
+        #{studentCount,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        #{score1,jdbcType=INTEGER},
+      </if>
+      <if test="score2 != null">
+        #{score2,jdbcType=INTEGER},
+      </if>
+      <if test="score3 != null">
+        #{score3,jdbcType=INTEGER},
+      </if>
+      <if test="score4 != null">
+        #{score4,jdbcType=INTEGER},
+      </if>
+      <if test="score5 != null">
+        #{score5,jdbcType=INTEGER},
+      </if>
+      <if test="score6 != null">
+        #{score6,jdbcType=INTEGER},
+      </if>
+      <if test="averageScore != null">
+        #{averageScore,jdbcType=DOUBLE},
+      </if>
+      <if test="variance != null">
+        #{variance,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ustcsse.basic.domain.ScoreCount">
+    <!--@mbg.generated-->
+    update basic.ScoreCount
+    <set>
+      <if test="roomID != null">
+        RoomID = #{roomID,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        StartTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        EndTime = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentCount != null">
+        StudentCount = #{studentCount,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        Score1 = #{score1,jdbcType=INTEGER},
+      </if>
+      <if test="score2 != null">
+        Score2 = #{score2,jdbcType=INTEGER},
+      </if>
+      <if test="score3 != null">
+        Score3 = #{score3,jdbcType=INTEGER},
+      </if>
+      <if test="score4 != null">
+        Score4 = #{score4,jdbcType=INTEGER},
+      </if>
+      <if test="score5 != null">
+        Score5 = #{score5,jdbcType=INTEGER},
+      </if>
+      <if test="score6 != null">
+        Score6 = #{score6,jdbcType=INTEGER},
+      </if>
+      <if test="averageScore != null">
+        AverageScore = #{averageScore,jdbcType=DOUBLE},
+      </if>
+      <if test="variance != null">
+        Variance = #{variance,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ustcsse.basic.domain.ScoreCount">
+    <!--@mbg.generated-->
+    update basic.ScoreCount
+    set RoomID = #{roomID,jdbcType=BIGINT},
+      StartTime = #{startTime,jdbcType=TIMESTAMP},
+      EndTime = #{endTime,jdbcType=TIMESTAMP},
+      StudentCount = #{studentCount,jdbcType=INTEGER},
+      Score1 = #{score1,jdbcType=INTEGER},
+      Score2 = #{score2,jdbcType=INTEGER},
+      Score3 = #{score3,jdbcType=INTEGER},
+      Score4 = #{score4,jdbcType=INTEGER},
+      Score5 = #{score5,jdbcType=INTEGER},
+      Score6 = #{score6,jdbcType=INTEGER},
+      AverageScore = #{averageScore,jdbcType=DOUBLE},
+      Variance = #{variance,jdbcType=DOUBLE}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update basic.ScoreCount
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="RoomID = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.roomID,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="StartTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.startTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="EndTime = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.endTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="StudentCount = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.studentCount,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Score1 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.score1,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Score2 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.score2,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Score3 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.score3,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Score4 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.score4,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Score5 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.score5,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Score6 = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.score6,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="AverageScore = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.averageScore,jdbcType=DOUBLE}
+        </foreach>
+      </trim>
+      <trim prefix="Variance = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.variance,jdbcType=DOUBLE}
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into basic.ScoreCount
+    (Id, RoomID, StartTime, EndTime, StudentCount, Score1, Score2, Score3, Score4, Score5, 
+      Score6, AverageScore, Variance)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.roomID,jdbcType=BIGINT}, #{item.startTime,jdbcType=TIMESTAMP}, 
+        #{item.endTime,jdbcType=TIMESTAMP}, #{item.studentCount,jdbcType=INTEGER}, #{item.score1,jdbcType=INTEGER}, 
+        #{item.score2,jdbcType=INTEGER}, #{item.score3,jdbcType=INTEGER}, #{item.score4,jdbcType=INTEGER}, 
+        #{item.score5,jdbcType=INTEGER}, #{item.score6,jdbcType=INTEGER}, #{item.averageScore,jdbcType=DOUBLE}, 
+        #{item.variance,jdbcType=DOUBLE})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="cn.ustcsse.basic.domain.ScoreCount">
+    <!--@mbg.generated-->
+    insert into basic.ScoreCount
+    (Id, RoomID, StartTime, EndTime, StudentCount, Score1, Score2, Score3, Score4, Score5, 
+      Score6, AverageScore, Variance)
+    values
+    (#{id,jdbcType=BIGINT}, #{roomID,jdbcType=BIGINT}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{studentCount,jdbcType=INTEGER}, #{score1,jdbcType=INTEGER}, 
+      #{score2,jdbcType=INTEGER}, #{score3,jdbcType=INTEGER}, #{score4,jdbcType=INTEGER}, 
+      #{score5,jdbcType=INTEGER}, #{score6,jdbcType=INTEGER}, #{averageScore,jdbcType=DOUBLE}, 
+      #{variance,jdbcType=DOUBLE})
+    on duplicate key update 
+    Id = #{id,jdbcType=BIGINT}, 
+    RoomID = #{roomID,jdbcType=BIGINT}, 
+    StartTime = #{startTime,jdbcType=TIMESTAMP}, 
+    EndTime = #{endTime,jdbcType=TIMESTAMP}, 
+    StudentCount = #{studentCount,jdbcType=INTEGER}, 
+    Score1 = #{score1,jdbcType=INTEGER}, 
+    Score2 = #{score2,jdbcType=INTEGER}, 
+    Score3 = #{score3,jdbcType=INTEGER}, 
+    Score4 = #{score4,jdbcType=INTEGER}, 
+    Score5 = #{score5,jdbcType=INTEGER}, 
+    Score6 = #{score6,jdbcType=INTEGER}, 
+    AverageScore = #{averageScore,jdbcType=DOUBLE}, 
+    Variance = #{variance,jdbcType=DOUBLE}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="cn.ustcsse.basic.domain.ScoreCount">
+    <!--@mbg.generated-->
+    insert into basic.ScoreCount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="roomID != null">
+        RoomID,
+      </if>
+      <if test="startTime != null">
+        StartTime,
+      </if>
+      <if test="endTime != null">
+        EndTime,
+      </if>
+      <if test="studentCount != null">
+        StudentCount,
+      </if>
+      <if test="score1 != null">
+        Score1,
+      </if>
+      <if test="score2 != null">
+        Score2,
+      </if>
+      <if test="score3 != null">
+        Score3,
+      </if>
+      <if test="score4 != null">
+        Score4,
+      </if>
+      <if test="score5 != null">
+        Score5,
+      </if>
+      <if test="score6 != null">
+        Score6,
+      </if>
+      <if test="averageScore != null">
+        AverageScore,
+      </if>
+      <if test="variance != null">
+        Variance,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roomID != null">
+        #{roomID,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentCount != null">
+        #{studentCount,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        #{score1,jdbcType=INTEGER},
+      </if>
+      <if test="score2 != null">
+        #{score2,jdbcType=INTEGER},
+      </if>
+      <if test="score3 != null">
+        #{score3,jdbcType=INTEGER},
+      </if>
+      <if test="score4 != null">
+        #{score4,jdbcType=INTEGER},
+      </if>
+      <if test="score5 != null">
+        #{score5,jdbcType=INTEGER},
+      </if>
+      <if test="score6 != null">
+        #{score6,jdbcType=INTEGER},
+      </if>
+      <if test="averageScore != null">
+        #{averageScore,jdbcType=DOUBLE},
+      </if>
+      <if test="variance != null">
+        #{variance,jdbcType=DOUBLE},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roomID != null">
+        RoomID = #{roomID,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        StartTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        EndTime = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="studentCount != null">
+        StudentCount = #{studentCount,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        Score1 = #{score1,jdbcType=INTEGER},
+      </if>
+      <if test="score2 != null">
+        Score2 = #{score2,jdbcType=INTEGER},
+      </if>
+      <if test="score3 != null">
+        Score3 = #{score3,jdbcType=INTEGER},
+      </if>
+      <if test="score4 != null">
+        Score4 = #{score4,jdbcType=INTEGER},
+      </if>
+      <if test="score5 != null">
+        Score5 = #{score5,jdbcType=INTEGER},
+      </if>
+      <if test="score6 != null">
+        Score6 = #{score6,jdbcType=INTEGER},
+      </if>
+      <if test="averageScore != null">
+        AverageScore = #{averageScore,jdbcType=DOUBLE},
+      </if>
+      <if test="variance != null">
+        Variance = #{variance,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

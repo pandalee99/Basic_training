@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ustcsse.basic.mapper.ManagerMapper">
+  <resultMap id="BaseResultMap" type="cn.ustcsse.basic.domain.Manager">
+    <!--@mbg.generated-->
+    <!--@Table basic.Manager-->
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="No" jdbcType="VARCHAR" property="no" />
+    <result column="Role" jdbcType="VARCHAR" property="role" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Age" jdbcType="INTEGER" property="age" />
+    <result column="Gender" jdbcType="INTEGER" property="gender" />
+    <result column="Phone" jdbcType="VARCHAR" property="phone" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, `No`, `Role`, `Password`, `Name`, Age, Gender, Phone, Email
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from basic.Manager
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from basic.Manager
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.ustcsse.basic.domain.Manager">
+    <!--@mbg.generated-->
+    insert into basic.Manager (Id, `No`, `Role`, 
+      `Password`, `Name`, Age, 
+      Gender, Phone, Email
+      )
+    values (#{id,jdbcType=BIGINT}, #{no,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{gender,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ustcsse.basic.domain.Manager">
+    <!--@mbg.generated-->
+    insert into basic.Manager
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="no != null">
+        `No`,
+      </if>
+      <if test="role != null">
+        `Role`,
+      </if>
+      <if test="password != null">
+        `Password`,
+      </if>
+      <if test="name != null">
+        `Name`,
+      </if>
+      <if test="age != null">
+        Age,
+      </if>
+      <if test="gender != null">
+        Gender,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ustcsse.basic.domain.Manager">
+    <!--@mbg.generated-->
+    update basic.Manager
+    <set>
+      <if test="no != null">
+        `No` = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        `Role` = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `Password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `Name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        Age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        Gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ustcsse.basic.domain.Manager">
+    <!--@mbg.generated-->
+    update basic.Manager
+    set `No` = #{no,jdbcType=VARCHAR},
+      `Role` = #{role,jdbcType=VARCHAR},
+      `Password` = #{password,jdbcType=VARCHAR},
+      `Name` = #{name,jdbcType=VARCHAR},
+      Age = #{age,jdbcType=INTEGER},
+      Gender = #{gender,jdbcType=INTEGER},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update basic.Manager
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`No` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.no,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Role` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.role,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Password` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.password,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="Age = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.age,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Gender = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.gender,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="Phone = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.phone,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="Email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.email,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into basic.Manager
+    (Id, `No`, `Role`, `Password`, `Name`, Age, Gender, Phone, Email)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.no,jdbcType=VARCHAR}, #{item.role,jdbcType=VARCHAR}, 
+        #{item.password,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, #{item.age,jdbcType=INTEGER}, 
+        #{item.gender,jdbcType=INTEGER}, #{item.phone,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="cn.ustcsse.basic.domain.Manager">
+    <!--@mbg.generated-->
+    insert into basic.Manager
+    (Id, `No`, `Role`, `Password`, `Name`, Age, Gender, Phone, Email)
+    values
+    (#{id,jdbcType=BIGINT}, #{no,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{gender,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+    on duplicate key update 
+    Id = #{id,jdbcType=BIGINT}, 
+    `No` = #{no,jdbcType=VARCHAR}, 
+    `Role` = #{role,jdbcType=VARCHAR}, 
+    `Password` = #{password,jdbcType=VARCHAR}, 
+    `Name` = #{name,jdbcType=VARCHAR}, 
+    Age = #{age,jdbcType=INTEGER}, 
+    Gender = #{gender,jdbcType=INTEGER}, 
+    Phone = #{phone,jdbcType=VARCHAR}, 
+    Email = #{email,jdbcType=VARCHAR}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="cn.ustcsse.basic.domain.Manager">
+    <!--@mbg.generated-->
+    insert into basic.Manager
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="no != null">
+        `No`,
+      </if>
+      <if test="role != null">
+        `Role`,
+      </if>
+      <if test="password != null">
+        `Password`,
+      </if>
+      <if test="name != null">
+        `Name`,
+      </if>
+      <if test="age != null">
+        Age,
+      </if>
+      <if test="gender != null">
+        Gender,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null">
+        `No` = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        `Role` = #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `Password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `Name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        Age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null">
+        Gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+<!--auto generated by MybatisCodeHelper on 2022-10-21-->
+  <select id="selectOneByName" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from basic.Manager
+    where `Name`=#{name,jdbcType=VARCHAR}
+  </select>
+</mapper>

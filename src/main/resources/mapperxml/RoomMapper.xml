@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ustcsse.basic.mapper.RoomMapper">
+  <resultMap id="BaseResultMap" type="cn.ustcsse.basic.domain.Room">
+    <!--@mbg.generated-->
+    <!--@Table basic.Room-->
+    <id column="RoomID" jdbcType="BIGINT" property="roomID" />
+    <result column="RoomName" jdbcType="VARCHAR" property="roomName" />
+    <result column="Time" jdbcType="TIMESTAMP" property="time" />
+    <result column="CourseID" jdbcType="BIGINT" property="courseID" />
+    <result column="TeacherID" jdbcType="BIGINT" property="teacherID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    RoomID, RoomName, `Time`, CourseID, TeacherID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from basic.Room
+    where RoomID = #{roomID,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from basic.Room
+    where RoomID = #{roomID,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.ustcsse.basic.domain.Room">
+    <!--@mbg.generated-->
+    insert into basic.Room (RoomID, RoomName, `Time`, 
+      CourseID, TeacherID)
+    values (#{roomID,jdbcType=BIGINT}, #{roomName,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{courseID,jdbcType=BIGINT}, #{teacherID,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ustcsse.basic.domain.Room">
+    <!--@mbg.generated-->
+    insert into basic.Room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomID != null">
+        RoomID,
+      </if>
+      <if test="roomName != null">
+        RoomName,
+      </if>
+      <if test="time != null">
+        `Time`,
+      </if>
+      <if test="courseID != null">
+        CourseID,
+      </if>
+      <if test="teacherID != null">
+        TeacherID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roomID != null">
+        #{roomID,jdbcType=BIGINT},
+      </if>
+      <if test="roomName != null">
+        #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseID != null">
+        #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="teacherID != null">
+        #{teacherID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ustcsse.basic.domain.Room">
+    <!--@mbg.generated-->
+    update basic.Room
+    <set>
+      <if test="roomName != null">
+        RoomName = #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `Time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseID != null">
+        CourseID = #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="teacherID != null">
+        TeacherID = #{teacherID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where RoomID = #{roomID,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ustcsse.basic.domain.Room">
+    <!--@mbg.generated-->
+    update basic.Room
+    set RoomName = #{roomName,jdbcType=VARCHAR},
+      `Time` = #{time,jdbcType=TIMESTAMP},
+      CourseID = #{courseID,jdbcType=BIGINT},
+      TeacherID = #{teacherID,jdbcType=BIGINT}
+    where RoomID = #{roomID,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update basic.Room
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="RoomName = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when RoomID = #{item.roomID,jdbcType=BIGINT} then #{item.roomName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when RoomID = #{item.roomID,jdbcType=BIGINT} then #{item.time,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="CourseID = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when RoomID = #{item.roomID,jdbcType=BIGINT} then #{item.courseID,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="TeacherID = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when RoomID = #{item.roomID,jdbcType=BIGINT} then #{item.teacherID,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+    </trim>
+    where RoomID in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.roomID,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into basic.Room
+    (RoomID, RoomName, `Time`, CourseID, TeacherID)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.roomID,jdbcType=BIGINT}, #{item.roomName,jdbcType=VARCHAR}, #{item.time,jdbcType=TIMESTAMP}, 
+        #{item.courseID,jdbcType=BIGINT}, #{item.teacherID,jdbcType=BIGINT})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="cn.ustcsse.basic.domain.Room">
+    <!--@mbg.generated-->
+    insert into basic.Room
+    (RoomID, RoomName, `Time`, CourseID, TeacherID)
+    values
+    (#{roomID,jdbcType=BIGINT}, #{roomName,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{courseID,jdbcType=BIGINT}, #{teacherID,jdbcType=BIGINT})
+    on duplicate key update 
+    RoomID = #{roomID,jdbcType=BIGINT}, 
+    RoomName = #{roomName,jdbcType=VARCHAR}, 
+    `Time` = #{time,jdbcType=TIMESTAMP}, 
+    CourseID = #{courseID,jdbcType=BIGINT}, 
+    TeacherID = #{teacherID,jdbcType=BIGINT}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="cn.ustcsse.basic.domain.Room">
+    <!--@mbg.generated-->
+    insert into basic.Room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomID != null">
+        RoomID,
+      </if>
+      <if test="roomName != null">
+        RoomName,
+      </if>
+      <if test="time != null">
+        `Time`,
+      </if>
+      <if test="courseID != null">
+        CourseID,
+      </if>
+      <if test="teacherID != null">
+        TeacherID,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomID != null">
+        #{roomID,jdbcType=BIGINT},
+      </if>
+      <if test="roomName != null">
+        #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseID != null">
+        #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="teacherID != null">
+        #{teacherID,jdbcType=BIGINT},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="roomID != null">
+        RoomID = #{roomID,jdbcType=BIGINT},
+      </if>
+      <if test="roomName != null">
+        RoomName = #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `Time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="courseID != null">
+        CourseID = #{courseID,jdbcType=BIGINT},
+      </if>
+      <if test="teacherID != null">
+        TeacherID = #{teacherID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ustcsse.basic.mapper.MessageMapper">
+  <resultMap id="BaseResultMap" type="cn.ustcsse.basic.domain.Message">
+    <!--@mbg.generated-->
+    <!--@Table basic.Message-->
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="No" jdbcType="VARCHAR" property="no" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Info" jdbcType="VARCHAR" property="info" />
+    <result column="Time" jdbcType="TIMESTAMP" property="time" />
+    <result column="RoomID" jdbcType="BIGINT" property="roomID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, `No`, `Name`, Info, `Time`, RoomID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from basic.Message
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from basic.Message
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.ustcsse.basic.domain.Message">
+    <!--@mbg.generated-->
+    insert into basic.Message (Id, `No`, `Name`, 
+      Info, `Time`, RoomID
+      )
+    values (#{id,jdbcType=BIGINT}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{info,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{roomID,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ustcsse.basic.domain.Message">
+    <!--@mbg.generated-->
+    insert into basic.Message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="no != null">
+        `No`,
+      </if>
+      <if test="name != null">
+        `Name`,
+      </if>
+      <if test="info != null">
+        Info,
+      </if>
+      <if test="time != null">
+        `Time`,
+      </if>
+      <if test="roomID != null">
+        RoomID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomID != null">
+        #{roomID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ustcsse.basic.domain.Message">
+    <!--@mbg.generated-->
+    update basic.Message
+    <set>
+      <if test="no != null">
+        `No` = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `Name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        Info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `Time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomID != null">
+        RoomID = #{roomID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ustcsse.basic.domain.Message">
+    <!--@mbg.generated-->
+    update basic.Message
+    set `No` = #{no,jdbcType=VARCHAR},
+      `Name` = #{name,jdbcType=VARCHAR},
+      Info = #{info,jdbcType=VARCHAR},
+      `Time` = #{time,jdbcType=TIMESTAMP},
+      RoomID = #{roomID,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update basic.Message
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`No` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.no,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Name` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.name,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="Info = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.info,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.time,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="RoomID = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.roomID,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into basic.Message
+    (Id, `No`, `Name`, Info, `Time`, RoomID)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.no,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, 
+        #{item.info,jdbcType=VARCHAR}, #{item.time,jdbcType=TIMESTAMP}, #{item.roomID,jdbcType=BIGINT}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="cn.ustcsse.basic.domain.Message">
+    <!--@mbg.generated-->
+    insert into basic.Message
+    (Id, `No`, `Name`, Info, `Time`, RoomID)
+    values
+    (#{id,jdbcType=BIGINT}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{info,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP}, #{roomID,jdbcType=BIGINT})
+    on duplicate key update 
+    Id = #{id,jdbcType=BIGINT}, 
+    `No` = #{no,jdbcType=VARCHAR}, 
+    `Name` = #{name,jdbcType=VARCHAR}, 
+    Info = #{info,jdbcType=VARCHAR}, 
+    `Time` = #{time,jdbcType=TIMESTAMP}, 
+    RoomID = #{roomID,jdbcType=BIGINT}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="cn.ustcsse.basic.domain.Message">
+    <!--@mbg.generated-->
+    insert into basic.Message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="no != null">
+        `No`,
+      </if>
+      <if test="name != null">
+        `Name`,
+      </if>
+      <if test="info != null">
+        Info,
+      </if>
+      <if test="time != null">
+        `Time`,
+      </if>
+      <if test="roomID != null">
+        RoomID,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomID != null">
+        #{roomID,jdbcType=BIGINT},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null">
+        `No` = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `Name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null">
+        Info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `Time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomID != null">
+        RoomID = #{roomID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

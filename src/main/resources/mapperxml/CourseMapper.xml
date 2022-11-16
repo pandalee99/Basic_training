@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ustcsse.basic.mapper.CourseMapper">
+  <resultMap id="BaseResultMap" type="cn.ustcsse.basic.domain.Course">
+    <!--@mbg.generated-->
+    <!--@Table basic.Course-->
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="CourseName" jdbcType="VARCHAR" property="courseName" />
+    <result column="Time" jdbcType="TIMESTAMP" property="time" />
+    <result column="TeacherID" jdbcType="BIGINT" property="teacherID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, CourseName, `Time`, TeacherID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from basic.Course
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from basic.Course
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.ustcsse.basic.domain.Course">
+    <!--@mbg.generated-->
+    insert into basic.Course (Id, CourseName, `Time`, 
+      TeacherID)
+    values (#{id,jdbcType=BIGINT}, #{courseName,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{teacherID,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.ustcsse.basic.domain.Course">
+    <!--@mbg.generated-->
+    insert into basic.Course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="courseName != null">
+        CourseName,
+      </if>
+      <if test="time != null">
+        `Time`,
+      </if>
+      <if test="teacherID != null">
+        TeacherID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherID != null">
+        #{teacherID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.ustcsse.basic.domain.Course">
+    <!--@mbg.generated-->
+    update basic.Course
+    <set>
+      <if test="courseName != null">
+        CourseName = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `Time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherID != null">
+        TeacherID = #{teacherID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.ustcsse.basic.domain.Course">
+    <!--@mbg.generated-->
+    update basic.Course
+    set CourseName = #{courseName,jdbcType=VARCHAR},
+      `Time` = #{time,jdbcType=TIMESTAMP},
+      TeacherID = #{teacherID,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update basic.Course
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="CourseName = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.courseName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`Time` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.time,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="TeacherID = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when Id = #{item.id,jdbcType=BIGINT} then #{item.teacherID,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+    </trim>
+    where Id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into basic.Course
+    (Id, CourseName, `Time`, TeacherID)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.courseName,jdbcType=VARCHAR}, #{item.time,jdbcType=TIMESTAMP}, 
+        #{item.teacherID,jdbcType=BIGINT})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="cn.ustcsse.basic.domain.Course">
+    <!--@mbg.generated-->
+    insert into basic.Course
+    (Id, CourseName, `Time`, TeacherID)
+    values
+    (#{id,jdbcType=BIGINT}, #{courseName,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
+      #{teacherID,jdbcType=BIGINT})
+    on duplicate key update 
+    Id = #{id,jdbcType=BIGINT}, 
+    CourseName = #{courseName,jdbcType=VARCHAR}, 
+    `Time` = #{time,jdbcType=TIMESTAMP}, 
+    TeacherID = #{teacherID,jdbcType=BIGINT}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="cn.ustcsse.basic.domain.Course">
+    <!--@mbg.generated-->
+    insert into basic.Course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="courseName != null">
+        CourseName,
+      </if>
+      <if test="time != null">
+        `Time`,
+      </if>
+      <if test="teacherID != null">
+        TeacherID,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherID != null">
+        #{teacherID,jdbcType=BIGINT},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        Id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="courseName != null">
+        CourseName = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `Time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherID != null">
+        TeacherID = #{teacherID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

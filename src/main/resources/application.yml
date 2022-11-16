@@ -1,0 +1,17 @@
+mybatis:
+  mapper-locations: classpath:/mapperxml/*.xml
+  type-aliases-package: cn.ustcsse.basic.mapper
+
+server:
+  port: 8001
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.17.129:3306/micro_trade?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+
