@@ -1,4 +1,5 @@
 package cn.ustcsse.basic.service.impl;
+import cn.ustcsse.basic.domain.Teacher;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -11,6 +12,8 @@ public class ManagerServiceImpl implements ManagerService{
 
     @Resource
     private ManagerMapper managerMapper;
+    @org.springframework.beans.factory.annotation.Autowired
+    private cn.ustcsse.basic.mapper.TeacherMapper teacherMapper;
 
     @Override
     public int deleteByPrimaryKey(Long id) {
@@ -66,6 +69,30 @@ public class ManagerServiceImpl implements ManagerService{
 	public Manager selectOneByName(String name){
 		 return managerMapper.selectOneByName(name);
 	}
+
+	@Override
+	public List<Manager> get(){
+		 return managerMapper.get();
+	}
+
+	@Override
+	public List<Teacher> select(){
+		 return teacherMapper.select();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

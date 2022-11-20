@@ -56,4 +56,10 @@ public interface StudentMapper {
     int updateBatch(List<Student> list);
 
     int batchInsert(@Param("list") List<Student> list);
+
+   List<Student> findByAll(Student student);
+
+    List<Student> find();
+
+
 }

@@ -62,4 +62,9 @@ public class TeacherServiceImpl implements TeacherService{
         return teacherMapper.batchInsert(list);
     }
 
+    @Override
+    public List<Teacher> find() {
+        return teacherMapper.find();
+    }
+
 }

@@ -59,5 +59,11 @@ public interface ManagerMapper {
 
     Manager selectOneByName(@Param("name")String name);
 
+    List<Manager> get();
+
+
+
+
+
 
 }

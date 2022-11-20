@@ -35,10 +35,7 @@ class BasicApplicationTests {
 
     @Test
     void testdatabase(){
-        Manager manager = new Manager();
-        System.out.println(managerService.selectOneByName("admin"));
-
-
+        System.out.println(studentService.deleteByPrimaryKey(1042451207971303424L));
     }
 
     @Test

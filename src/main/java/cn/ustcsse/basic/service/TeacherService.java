@@ -1,6 +1,8 @@
 package cn.ustcsse.basic.service;
 
 import java.util.List;
+
+import cn.ustcsse.basic.domain.Student;
 import cn.ustcsse.basic.domain.Teacher;
 public interface TeacherService{
 
@@ -24,5 +26,7 @@ public interface TeacherService{
     int updateBatch(List<Teacher> list);
 
     int batchInsert(List<Teacher> list);
+
+    List<Teacher> find();
 
 }

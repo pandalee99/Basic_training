@@ -62,4 +62,15 @@ public class StudentServiceImpl implements StudentService{
         return studentMapper.batchInsert(list);
     }
 
+	@Override
+	public List<Student> findByAll(Student student){
+		 return studentMapper.findByAll(student);
+	}
+
+    @Override
+    public List<Student> find() {
+        return studentMapper.find();
+    }
+
+
 }

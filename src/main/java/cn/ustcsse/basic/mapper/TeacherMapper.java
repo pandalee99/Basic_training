@@ -1,5 +1,6 @@
 package cn.ustcsse.basic.mapper;
 
+import cn.ustcsse.basic.domain.Student;
 import cn.ustcsse.basic.domain.Teacher;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
@@ -56,4 +57,13 @@ public interface TeacherMapper {
     int updateBatch(List<Teacher> list);
 
     int batchInsert(@Param("list") List<Teacher> list);
+
+    List<Teacher> find();
+
+    List<Teacher> get();
+
+    List<Teacher> select();
+
+
+
 }

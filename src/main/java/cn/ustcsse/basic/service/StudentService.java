@@ -25,4 +25,10 @@ public interface StudentService{
 
     int batchInsert(List<Student> list);
 
+
+
+	List<Student> findByAll(Student student);
+
+    List<Student> find();
+
 }

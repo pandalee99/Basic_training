@@ -1,4 +1,5 @@
 package cn.ustcsse.basic.service;
+import cn.ustcsse.basic.domain.Teacher;
 
 import java.util.List;
 import cn.ustcsse.basic.domain.Manager;
@@ -28,6 +29,22 @@ public interface ManagerService{
 
 
 	Manager selectOneByName(String name);
+
+
+
+	List<Manager> get();
+
+
+
+	List<Teacher> select();
+
+
+
+
+
+
+
+
 
 
 
